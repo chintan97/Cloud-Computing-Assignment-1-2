@@ -8,7 +8,12 @@
 module.exports = {
 
   attributes: {
-
+      weight: {
+        type: 'string'
+      },
+      height:{
+        type: 'string'
+      },
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
