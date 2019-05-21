@@ -21,8 +21,22 @@
             var weight089 = document.getElementById('weight089').value; // get weight value
             var height089 = document.getElementById('height089').value;  // get height value
 
+            // weight can not be empty
+            if (weight089 == ''){
+                alert('Please enter weight!');
+                document.getElementById('weight089').focus();
+                return false;
+            }
+
+            // height can not be empty
+            else if (height089 == ''){
+                alert('Please enter height!');
+                document.getElementById('height089').focus();
+                return false;
+            }
+
             // weight can not be zero or less than zero
-            if (weight089 <= 0){
+            else if (weight089 <= 0){
                 alert('Weight can not be less or equal to zero!');
                 document.getElementById('weight089').focus();
                 return false;
@@ -46,6 +60,9 @@
                 dataType: 'json',
                 success: function(responseData089){
                     $('#bmiResult089').html('BMI value = '+ responseData089);
+                },
+                error: function(){
+                    $('#bmiResult089').html('Service not available!');
                 },
             });
         }
