@@ -1,0 +1,92 @@
+<html>
+
+<head>
+    <title>BMI app</title>
+
+    <!-- bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    <!-- jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- bootstrap js -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+    <script>
+        // function for validation and handling AJAX request, response.
+        // First it validates user input. Then using AJAX request, it
+        // sends request to web service which is running on 1337 port.
+        // The request is in json and response is shown within this page.
+        function check_values089(){
+            var weight089 = document.getElementById('weight089').value; // get weight value
+            var height089 = document.getElementById('height089').value;  // get height value
+
+            // weight can not be zero or less than zero
+            if (weight089 <= 0){
+                alert('Weight can not be less or equal to zero!');
+                document.getElementById('weight089').focus();
+                return false;
+            }
+
+            // height can not be zero or less than zero
+            else if (height089 <= 0){
+                alert('Height can not be less or equal to zero!');
+                document.getElementById('height089').focus();
+                return false;
+            }
+
+            // The flow of jQuery request is taken from
+            // https://stackoverflow.com/questions/1960240/jquery-ajax-submit-form
+        
+            // This will request web service and response will be shown in bmiResult089.
+            jQuery.ajax({
+                url: 'http://localhost:1337/calculate089',
+                method: 'post',
+                data: { "weight089": $('#weight089').val(), "height089": $('#height089').val()},
+                dataType: 'json',
+                success: function(responseData089){
+                    $('#bmiResult089').html('BMI value = '+ responseData089);
+                },
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <div style="padding-left: 200px; padding-right:200px; padding-top:50px">
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h3 class="display-4">Body Mass Index (BMI) app</h3>
+                <h4 class="display-6">Enter weight and height below to calculate BMI</h4>
+                <div style="padding-bottom:20px"></div>
+
+                <form name="form_values" id="form_values">
+                    
+                    <!-- Weight -->
+                    <div class="form-group">
+                        <label for="weight">Weight (in kg)</label>
+                        <input type="number" step="any" min="0" id="weight089" name="weight089" class="form-control">
+                    </div>
+
+                    <!-- Height -->
+                    <div class="form-group">
+                        <label for="height">Height (in meters)</label>
+                        <input type="number" step="any" min="0" id="height089" name="height089" class="form-control">
+                    </div>
+
+                    <!-- Submit button -->
+                    <!-- On click of the button, the function will validate weight and height 
+                        values and show response in bmiResult089 -->
+                    <div style="text-align:center">
+                        <input type="button" id="submitButton089" onclick="check_values089()" value="submit" class="btn btn-primary" style="width:150px">
+                    </div>  
+                </form>
+
+                <!-- Response will be shown here -->
+                <h4 class="display-6"><p id="bmiResult089"></p></h4>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
