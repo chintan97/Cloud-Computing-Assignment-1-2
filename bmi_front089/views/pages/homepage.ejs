@@ -1,17 +1,6 @@
 <html>
 
 <head>
-    <title>BMI app</title>
-
-    <!-- bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    
-    <!-- jquery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-    <!-- bootstrap js -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    
     <script>
         // function for validation and handling AJAX request, response.
         // First it validates user input. Then using AJAX request, it
@@ -54,7 +43,7 @@
         
             // This will request web service and response will be shown in bmiResult089.
             jQuery.ajax({
-                url: 'https://secondassignment089.herokuapp.com/calculate089',
+                url: 'http://secondassignment089.herokuapp.com/calculate089',
                 method: 'post',
                 data: { "weight089": $('#weight089').val(), "height089": $('#height089').val()},
                 dataType: 'json',
